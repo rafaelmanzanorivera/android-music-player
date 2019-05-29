@@ -18,5 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
         ViewPager pager = findViewById(R.id.viewpager);
         pager.setAdapter(adapter);
+
+        //Toolbar conf
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 }
