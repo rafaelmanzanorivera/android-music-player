@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.android_music_player.MainActivity;
 import com.example.android_music_player.R;
@@ -18,7 +19,7 @@ import com.example.android_music_player.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Albums_Fr extends Fragment {
+public class Albums_Fr extends Fragment implements DirectoryRecyclerAdapter.ItemClickListener{
 
 
     public Albums_Fr() {
@@ -42,6 +43,13 @@ public class Albums_Fr extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         DirectoryRecyclerAdapter adapter = new DirectoryRecyclerAdapter(MainActivity.mediaData.getDirectoriesList());
+        adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
+
+    public void onItemClick(View view, int position) {
+        Toast.makeText(getActivity(), "Item: " + position, Toast.LENGTH_SHORT).show();
+    }
+
+
 }
