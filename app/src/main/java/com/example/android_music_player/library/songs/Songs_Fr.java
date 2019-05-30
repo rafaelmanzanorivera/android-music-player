@@ -7,9 +7,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.android_music_player.MainActivity;
 import com.example.android_music_player.R;
@@ -40,7 +42,23 @@ public class Songs_Fr extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getView().getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        SongsRecyclerAdapter songsRecyclerAdapter = new SongsRecyclerAdapter(MainActivity.mediaData.getSongsList());
+        SongsRecyclerAdapter songsRecyclerAdapter = new SongsRecyclerAdapter(MainActivity.mediaData.getSongsList(),this.getActivity(), new SongsRecyclerAdapter.AdapterListenerInterface() {
+            @Override
+            public void classOnClick(View v, int position) {
+                Log.d("midebug",v +" " + position + " ");
+
+                //TODO implement play/pause
+
+            }
+
+            @Override
+            public void daysOnClick(View v, int position) {
+                Log.d("midebug",v +" " + position + " ");
+
+                //TODO implement add to playlist
+            }
+        });
+
         recyclerView.setAdapter(songsRecyclerAdapter);
 
     }
