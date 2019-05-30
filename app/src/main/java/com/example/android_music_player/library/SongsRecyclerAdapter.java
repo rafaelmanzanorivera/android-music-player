@@ -4,8 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,11 +18,11 @@ public class SongsRecyclerAdapter extends RecyclerView.Adapter<SongsRecyclerAdap
 
     public static class MyViewHolder extends RecyclerView.ViewHolder
     {
-        public RelativeLayout gridLayout;
+        public RelativeLayout relativeLayout;
         public MyViewHolder(RelativeLayout v)
         {
             super(v);
-            gridLayout = v;
+            relativeLayout = v;
         }
     }
 
@@ -42,8 +40,8 @@ public class SongsRecyclerAdapter extends RecyclerView.Adapter<SongsRecyclerAdap
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i){
-        ((TextView) myViewHolder.gridLayout.findViewById(R.id.item_song_name)).setText(dataset.get(i).getaName());
-        ((TextView) myViewHolder.gridLayout.findViewById(R.id.item_song_duration)).setText(dataset.get(i).getaAlbum());
+        ((TextView) myViewHolder.relativeLayout.findViewById(R.id.item_song_name)).setText(dataset.get(i).getaName());
+        ((TextView) myViewHolder.relativeLayout.findViewById(R.id.item_song_duration)).setText(dataset.get(i).getaAlbum());
     }
 
     @Override

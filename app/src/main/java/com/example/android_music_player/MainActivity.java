@@ -57,8 +57,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.navigationdrawer_view);
         navigationView.setNavigationItemSelectedListener(this);//decirle al menú que la actividad va a controlar los eventos de seleccionar un ítem.
 
-        //get media data
+        //get media data TODO in background
         mediaData.getSongsList();
+        mediaData.getDirectoriesList();
 
     }
 
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
     }
 
-
+    //TODO en caso de que no te los den
     private void getPermissions()
     {
 // Here, thisActivity is the current activity

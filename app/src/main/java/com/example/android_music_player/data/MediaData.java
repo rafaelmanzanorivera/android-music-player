@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.example.android_music_player.MainActivity;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class MediaData
 {
 
     private List<AudioModel> songsList;
+    private List<DirectoryModel> directories;
     private Context context;
 
     public MediaData(final Context c)
@@ -25,6 +27,7 @@ public class MediaData
         context = c;
         songsList = null;
     }
+
 
 
     public List<AudioModel> getSongsList()
@@ -39,7 +42,47 @@ public class MediaData
     }
 
 
+    public List<DirectoryModel> getDirectoriesList()
+    {
+        if(directories != null)
+            return directories;
+        else
+        {
+            this.populateDirectories();
+            return directories;
+        }
+    }
 
+
+    private void populateDirectories()
+    {
+        directories = new ArrayList<>();
+
+        for (AudioModel song : songsList)
+        {
+            String dirName = song.aPath.split("/")[song.aPath.split("/").length-2];
+
+            DirectoryModel dir = getDirectoryWithName(dirName);
+
+            if(dir != null)
+                dir.addSong(song);
+            else
+            {
+                DirectoryModel newDirectory = new DirectoryModel(dirName);
+                directories.add(newDirectory);
+                newDirectory.addSong(song);
+            }
+        }
+    }
+
+    private DirectoryModel getDirectoryWithName(String dirName)
+    {
+        for (DirectoryModel dir: directories)
+            if(dirName.equals(dir.getDirectoryName()))
+                return dir;
+
+        return null;
+    }
 
     // Method to read all the audio/MP3 files.
     private void getAllAudioFromDevice(final Context context) {
