@@ -1,10 +1,15 @@
 package com.example.android_music_player.data;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+
+import com.example.android_music_player.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
