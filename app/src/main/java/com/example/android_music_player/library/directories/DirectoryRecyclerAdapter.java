@@ -1,6 +1,5 @@
-package com.example.android_music_player.library;
+package com.example.android_music_player.library.directories;
 
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

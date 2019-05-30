@@ -1,4 +1,4 @@
-package com.example.android_music_player.library;
+package com.example.android_music_player.library.songs;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

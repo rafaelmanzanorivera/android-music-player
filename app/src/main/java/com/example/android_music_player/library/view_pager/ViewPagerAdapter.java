@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.android_music_player.R;
-import com.example.android_music_player.library.Albums_Fr;
-import com.example.android_music_player.library.Songs_Fr;
+import com.example.android_music_player.library.directories.Albums_Fr;
+import com.example.android_music_player.library.songs.Songs_Fr;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
