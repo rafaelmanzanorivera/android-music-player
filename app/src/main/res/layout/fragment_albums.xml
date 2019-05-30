@@ -8,16 +8,12 @@
     android:paddingBottom="16dp"
     tools:context=".MainActivity">
 
-    <GridView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/directory_grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:columnWidth="100dp"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="24dp"
-        android:horizontalSpacing="20dp"
-        android:stretchMode="spacingWidthUniform">
+        >
 
-    </GridView>
+    </android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
