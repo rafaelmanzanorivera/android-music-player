@@ -1,6 +1,7 @@
 package com.example.android_music_player.library.directories;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,7 +19,8 @@ import com.example.android_music_player.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Albums_Fr extends Fragment implements DirectoryRecyclerAdapter.ItemClickListener{
+public class Albums_Fr extends Fragment{
+
 
 
     public Albums_Fr() {
@@ -38,17 +40,12 @@ public class Albums_Fr extends Fragment implements DirectoryRecyclerAdapter.Item
 
         RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.directory_grid);
 
+        Context a = this.getActivity();
+
         GridLayoutManager layoutManager = new GridLayoutManager(getView().getContext(),3);
         recyclerView.setLayoutManager(layoutManager);
 
-        DirectoryRecyclerAdapter adapter = new DirectoryRecyclerAdapter(MainActivity.mediaData.getDirectoriesList());
-        adapter.setClickListener(this);
+        DirectoryRecyclerAdapter adapter = new DirectoryRecyclerAdapter(MainActivity.mediaData.getDirectoriesList(),a);
         recyclerView.setAdapter(adapter);
     }
-
-    public void onItemClick(View view, int position) {
-        Toast.makeText(getActivity(), "Item: " + position, Toast.LENGTH_SHORT).show();
-    }
-
-
 }

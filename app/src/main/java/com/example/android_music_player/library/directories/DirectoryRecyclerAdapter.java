@@ -53,6 +53,9 @@ public class DirectoryRecyclerAdapter extends RecyclerView.Adapter<DirectoryRecy
             dirImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent intent = new Intent(context,DirectorySongs.class);
+                    intent.putExtra("position",getAdapterPosition());
+                    context.startActivity(intent);
                 }
             });
 
