@@ -1,4 +1,4 @@
-package com.example.android_music_player;
+package com.example.android_music_player.data;
 
 public class AudioModel {
     String aPath;
