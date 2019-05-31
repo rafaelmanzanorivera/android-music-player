@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/drawerlayout"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".playlists.Playlists">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".playlists.Playlists">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        />
+
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.example.android_music_player.playlists.PlaylistFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:paddingTop="?android:attr/actionBarSize"/>
+
+
+
+
+
+</RelativeLayout>
+
+<android.support.design.widget.NavigationView
+android:id="@+id/navigationdrawer_view"
+android:layout_width="wrap_content"
+android:layout_height="match_parent"
+android:layout_gravity="start"
+app:headerLayout="@layout/navigationdrawer_top"
+app:menu="@menu/navigationdrawer_menu">
+
+</android.support.design.widget.NavigationView>
+
+    </android.support.v4.widget.DrawerLayout>
