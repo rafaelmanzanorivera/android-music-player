@@ -1,4 +1,4 @@
-package com.example.android_music_player.library.directories;
+package com.example.android_music_player.library.directoriesView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android_music_player.MainActivity;
 import com.example.android_music_player.R;
 import com.example.android_music_player.data.DirectoryModel;
 

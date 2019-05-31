@@ -1,19 +1,15 @@
-package com.example.android_music_player.library.directories;
+package com.example.android_music_player.library.directoriesView;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 
 import com.example.android_music_player.MainActivity;
 import com.example.android_music_player.R;
-import com.example.android_music_player.library.songs.ListenerInterfaceContainer;
-import com.example.android_music_player.library.songs.SongsRecyclerAdapter;
+import com.example.android_music_player.library.songsView.ListenerInterfaceContainer;
+import com.example.android_music_player.library.songsView.SongsRecyclerAdapter;
 
 
 public class DirectorySongs extends AppCompatActivity {

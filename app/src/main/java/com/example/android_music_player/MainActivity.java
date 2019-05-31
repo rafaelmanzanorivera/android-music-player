@@ -2,8 +2,6 @@ package com.example.android_music_player;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.media.MediaPlayer;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -16,10 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.android_music_player.data.AudioModel;
 import com.example.android_music_player.data.MediaData;
-import com.example.android_music_player.library.songs.ListenerInterfaceContainer;
-import com.example.android_music_player.library.songs.SongsRecyclerAdapter;
+import com.example.android_music_player.library.songsView.SongsRecyclerAdapter;
 import com.example.android_music_player.library.view_pager.ViewPagerAdapter;
 
 

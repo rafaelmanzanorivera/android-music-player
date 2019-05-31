@@ -8,6 +8,7 @@ import com.example.android_music_player.data.AudioModel;
 
 public class AudioPlayer
 {
+    //TODO notify ended song
     public MediaPlayer mediaPlayer;
     public AudioModel playingSong;
     public boolean isPaused = false;

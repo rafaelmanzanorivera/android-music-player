@@ -1,4 +1,4 @@
-package com.example.android_music_player.library.songs;
+package com.example.android_music_player.library.songsView;
 
 
 import android.os.Bundle;
