@@ -2,6 +2,7 @@ package com.example.android_music_player;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -13,6 +14,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.example.android_music_player.data.AudioModel;
 import com.example.android_music_player.data.MediaData;
 import com.example.android_music_player.library.view_pager.ViewPagerAdapter;
 
@@ -21,6 +24,7 @@ import com.example.android_music_player.library.view_pager.ViewPagerAdapter;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static MediaData mediaData;
+    public static AudioPlayer audioPlayer = new AudioPlayer();
     private static final int PERMISSIONS_REQUEST_READ_STORAGE= 0;
 
 

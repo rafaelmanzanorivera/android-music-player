@@ -29,6 +29,7 @@ public class SongsRecyclerAdapter extends RecyclerView.Adapter<SongsRecyclerAdap
             super(v);
             ImageView playBtn = (ImageView)v.findViewById(R.id.play_icon);
             ImageView addBtn = (ImageView)v.findViewById(R.id.add_icon);
+            ImageView pause = (ImageView)v.findViewById(R.id.pause_icon);
 
             playBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -41,6 +42,13 @@ public class SongsRecyclerAdapter extends RecyclerView.Adapter<SongsRecyclerAdap
                 @Override
                 public void onClick(View v) {
                     onClickListener.daysOnClick(v, getAdapterPosition());
+                }
+            });
+
+            pause.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickListener.classOnClick(v, getAdapterPosition());
                 }
             });
 

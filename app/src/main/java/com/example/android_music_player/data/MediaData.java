@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
+import com.example.android_music_player.AudioPlayer;
 import com.example.android_music_player.MainActivity;
 
 import java.io.Console;
@@ -80,6 +81,15 @@ public class MediaData
         for (DirectoryModel dir: directories)
             if(dirName.equals(dir.getDirectoryName()))
                 return dir;
+
+        return null;
+    }
+
+    public AudioModel getSongWithName(String name)
+    {
+        for (AudioModel s: songsList)
+            if(s.getaName().equals(name))
+                return s;
 
         return null;
     }
