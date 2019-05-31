@@ -10,7 +10,7 @@ public class AudioPlayer
 {
     public MediaPlayer mediaPlayer;
     public AudioModel playingSong;
-    public RelativeLayout playingSongLayout;
+    public RelativeLayout playingSongLayout;//TODO move to main
 
     public AudioPlayer()
     {

@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.example.android_music_player.MainActivity;
 import com.example.android_music_player.R;
+import com.example.android_music_player.library.songs.ListenerInterfaceContainer;
 import com.example.android_music_player.library.songs.SongsRecyclerAdapter;
 
 
@@ -36,23 +37,9 @@ public class DirectorySongs extends AppCompatActivity {
 
         getSupportActionBar().setTitle(MainActivity.mediaData.getDirectoriesList().get(albumPos).getDirectoryName());
 
-        SongsRecyclerAdapter songsRecyclerAdapter = new SongsRecyclerAdapter(MainActivity.mediaData.getDirectoriesList().get(albumPos).getSongs(),this, new SongsRecyclerAdapter.AdapterListenerInterface() {
-            @Override
-            public void classOnClick(View v, int position) {
-                Log.d("midebug",v +" " + position + " ");
+        ListenerInterfaceContainer container = new ListenerInterfaceContainer();
 
-                //TODO implement play/pause
-
-            }
-
-            @Override
-            public void daysOnClick(View v, int position) {
-                Log.d("midebug",v +" " + position + " ");
-
-                //TODO implement add to playlist
-            }
-        });
-
+        SongsRecyclerAdapter songsRecyclerAdapter = new SongsRecyclerAdapter(MainActivity.mediaData.getDirectoriesList().get(albumPos).getSongs(),this,container.s);
         recyclerView.setAdapter(songsRecyclerAdapter);
 
     }

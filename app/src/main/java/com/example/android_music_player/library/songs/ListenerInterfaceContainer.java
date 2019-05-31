@@ -4,16 +4,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.android_music_player.AudioPlayer;
 import com.example.android_music_player.MainActivity;
 import com.example.android_music_player.R;
 
-public class ListenerInterface
+public class ListenerInterfaceContainer
 {
     public SongsRecyclerAdapter.AdapterListenerInterface s;
 
-    public ListenerInterface()
+    public ListenerInterfaceContainer()
     {
         s = new SongsRecyclerAdapter.AdapterListenerInterface() {
             @Override
@@ -23,6 +24,9 @@ public class ListenerInterface
                 //TODO implement play/pause
 
                 RelativeLayout songLayout = (RelativeLayout) v.getParent();
+
+                TextView t = songLayout.findViewById(R.id.item_song_name);
+
                 ImageView playIcon = songLayout.findViewById(R.id.play_icon);
                 ImageView pauseIcon = songLayout.findViewById(R.id.pause_icon);
 
@@ -39,7 +43,8 @@ public class ListenerInterface
                         player.playingSongLayout.findViewById(R.id.pause_icon).setVisibility(View.INVISIBLE);
                     }
 
-                    player.play(MainActivity.mediaData.getSongsList().get(position));
+                    //player.play(MainActivity.mediaData.getSongsList().get(position));
+                    player.play(MainActivity.mediaData.getSongWithName(t.getText().toString()));
                     player.playingSongLayout = songLayout;
                 }
                 else
