@@ -1,6 +1,7 @@
 package com.example.android_music_player;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -17,7 +18,7 @@ import android.view.MenuItem;
 import com.example.android_music_player.data.MediaData;
 import com.example.android_music_player.library.songsView.SongsRecyclerAdapter;
 import com.example.android_music_player.library.view_pager.ViewPagerAdapter;
-
+import com.example.android_music_player.playlists.Playlists;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -77,7 +78,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.navigation_playlists:
-                //TODO intent to playlists actv
+                Intent intent = new Intent(this, Playlists.class);
+                startActivity(intent);
                 break;
 
             case R.id.navigation_options:
