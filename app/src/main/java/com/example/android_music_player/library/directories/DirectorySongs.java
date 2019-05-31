@@ -40,10 +40,8 @@ public class DirectorySongs extends AppCompatActivity {
 
         ListenerInterfaceContainer container = new ListenerInterfaceContainer();
 
-        SongsRecyclerAdapter songsRecyclerAdapter = new SongsRecyclerAdapter(MainActivity.mediaData.getDirectoriesList().get(albumPos).getSongs(),this,container.s);
-        recyclerView.setAdapter(songsRecyclerAdapter);
+        MainActivity.songsRecyclerAdapter = new SongsRecyclerAdapter(MainActivity.mediaData.getDirectoriesList().get(albumPos).getSongs(),this,container.s);
+        recyclerView.setAdapter(MainActivity.songsRecyclerAdapter);
 
     }
-
-
 }

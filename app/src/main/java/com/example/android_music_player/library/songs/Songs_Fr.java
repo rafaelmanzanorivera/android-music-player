@@ -19,7 +19,6 @@ import com.example.android_music_player.R;
  */
 public class Songs_Fr extends Fragment {
 
-
     public Songs_Fr() {
         // Required empty public constructor
     }
@@ -30,10 +29,12 @@ public class Songs_Fr extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_songs_, container, false);
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
 
         RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.song_list);
 
@@ -42,8 +43,19 @@ public class Songs_Fr extends Fragment {
 
         ListenerInterfaceContainer container = new ListenerInterfaceContainer();
 
-        SongsRecyclerAdapter songsRecyclerAdapter = new SongsRecyclerAdapter(MainActivity.mediaData.getSongsList(),this.getActivity(), container.s);
+        MainActivity.songsRecyclerAdapter = new SongsRecyclerAdapter(MainActivity.mediaData.getSongsList(),this.getActivity(), container.s);
 
-        recyclerView.setAdapter(songsRecyclerAdapter);
+        recyclerView.setAdapter(MainActivity.songsRecyclerAdapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //Reinicialize songsRecyclerAdapter after coming from album view
+        RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.song_list);
+        ListenerInterfaceContainer container = new ListenerInterfaceContainer();
+        MainActivity.songsRecyclerAdapter = new SongsRecyclerAdapter(MainActivity.mediaData.getSongsList(),this.getActivity(), container.s);
+        recyclerView.setAdapter(MainActivity.songsRecyclerAdapter);
     }
 }

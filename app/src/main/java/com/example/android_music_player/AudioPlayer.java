@@ -10,7 +10,7 @@ public class AudioPlayer
 {
     public MediaPlayer mediaPlayer;
     public AudioModel playingSong;
-    public RelativeLayout playingSongLayout;//TODO move to main
+    public boolean isPaused = false;
 
     public AudioPlayer()
     {
@@ -19,7 +19,7 @@ public class AudioPlayer
 
     public void play(AudioModel song)
     {
-
+        //TODO simplify logic (or comment at least)
         if(mediaPlayer.isPlaying())
         {
             //Different song
@@ -32,6 +32,7 @@ public class AudioPlayer
                     mediaPlayer.setDataSource(song.getaPath());
                     mediaPlayer.prepare();
                     mediaPlayer.start();
+                    isPaused = false;
                     playingSong = song;
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -52,6 +53,7 @@ public class AudioPlayer
                     mediaPlayer.setDataSource(song.getaPath());
                     mediaPlayer.prepare();
                     mediaPlayer.start();
+                    isPaused = false;
                     playingSong = song;
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -69,18 +71,27 @@ public class AudioPlayer
                 mediaPlayer.setDataSource(song.getaPath());
                 mediaPlayer.prepare();
                 mediaPlayer.start();
+                isPaused = false;
                 playingSong = song;
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+        isPaused = false;
+        MainActivity.songsRecyclerAdapter.notifyDataSetChanged();
 
     }
 
     public void pause()
     {
         if(mediaPlayer.isPlaying())
+        {
             mediaPlayer.pause();
+            isPaused = true;
+
+        }
+        MainActivity.songsRecyclerAdapter.notifyDataSetChanged();
+
     }
 
 

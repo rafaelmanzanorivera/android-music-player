@@ -3,6 +3,7 @@ package com.example.android_music_player;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -17,6 +18,8 @@ import android.view.MenuItem;
 
 import com.example.android_music_player.data.AudioModel;
 import com.example.android_music_player.data.MediaData;
+import com.example.android_music_player.library.songs.ListenerInterfaceContainer;
+import com.example.android_music_player.library.songs.SongsRecyclerAdapter;
 import com.example.android_music_player.library.view_pager.ViewPagerAdapter;
 
 
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static MediaData mediaData;
     public static AudioPlayer audioPlayer = new AudioPlayer();
     private static final int PERMISSIONS_REQUEST_READ_STORAGE= 0;
+    public static SongsRecyclerAdapter songsRecyclerAdapter;
 
 
     @Override
@@ -97,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+
     //Checks if menu is open before closing the app
     public void onBackPressed()
     {
@@ -158,6 +163,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // permissions this app might request.
         }
     }
+
+
 
 
 }

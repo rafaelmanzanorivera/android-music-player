@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.android_music_player.MainActivity;
 import com.example.android_music_player.R;
 import com.example.android_music_player.data.AudioModel;
 
@@ -31,24 +32,25 @@ public class SongsRecyclerAdapter extends RecyclerView.Adapter<SongsRecyclerAdap
             ImageView addBtn = (ImageView)v.findViewById(R.id.add_icon);
             ImageView pause = (ImageView)v.findViewById(R.id.pause_icon);
 
+            //Set button listeners
             playBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onClickListener.classOnClick(v, getAdapterPosition());
+                    onClickListener.playPause(v, getAdapterPosition());
                 }
             });
 
             addBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onClickListener.daysOnClick(v, getAdapterPosition());
+                    onClickListener.addToPlaylist(v, getAdapterPosition());
                 }
             });
 
             pause.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onClickListener.classOnClick(v, getAdapterPosition());
+                    onClickListener.playPause(v, getAdapterPosition());
                 }
             });
 
@@ -64,17 +66,54 @@ public class SongsRecyclerAdapter extends RecyclerView.Adapter<SongsRecyclerAdap
 
     @NonNull
     @Override
-    public SongsRecyclerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public SongsRecyclerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
+    {
         RelativeLayout v = (RelativeLayout) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.song_list_item,viewGroup,false);
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i){
-
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i)
+    {
         ((TextView) myViewHolder.relativeLayout.findViewById(R.id.item_song_name)).setText(dataset.get(i).getaName());
         ((TextView) myViewHolder.relativeLayout.findViewById(R.id.item_song_duration)).setText(dataset.get(i).getaAlbum());
+
+        ImageView playIcon = myViewHolder.relativeLayout.findViewById(R.id.play_icon);
+        ImageView pauseIcon = myViewHolder.relativeLayout.findViewById(R.id.pause_icon);
+
+        String song = dataset.get(i).getaName();
+
+        //Handle play pause layout
+
+        //If there is a playing song
+        if (MainActivity.audioPlayer.playingSong != null)
+        {
+            //Any song paused case -> all to playable
+            if(MainActivity.audioPlayer.isPaused)
+            {
+                pauseIcon.setVisibility(View.INVISIBLE);
+                playIcon.setVisibility(View.VISIBLE);
+            }
+            //This song is playing -> set to pausable
+            else if(song.equals(MainActivity.audioPlayer.playingSong.getaName()))
+            {
+                pauseIcon.setVisibility(View.VISIBLE);
+                playIcon.setVisibility(View.INVISIBLE);
+            }
+            //Other song is playing -> set to playable
+            else
+            {
+                pauseIcon.setVisibility(View.INVISIBLE);
+                playIcon.setVisibility(View.VISIBLE);
+            }
+        }
+        //If there is no playing song -> all playable
+        else
+        {
+            pauseIcon.setVisibility(View.INVISIBLE);
+            playIcon.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -85,7 +124,7 @@ public class SongsRecyclerAdapter extends RecyclerView.Adapter<SongsRecyclerAdap
 
     public interface AdapterListenerInterface {
 
-        void classOnClick(View v, int position);
-        void daysOnClick(View v, int position);
+        void playPause(View v, int position);
+        void addToPlaylist(View v, int position);
     }
 }

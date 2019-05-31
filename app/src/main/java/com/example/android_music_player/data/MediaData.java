@@ -6,13 +6,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
-
-import com.example.android_music_player.AudioPlayer;
-import com.example.android_music_player.MainActivity;
-
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,7 +82,7 @@ public class MediaData
     public AudioModel getSongWithName(String name)
     {
         for (AudioModel s: songsList)
-            if(s.getaName().equals(name))
+            if(s.getaName().startsWith(name))
                 return s;
 
         return null;

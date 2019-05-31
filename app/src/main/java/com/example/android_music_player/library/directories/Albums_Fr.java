@@ -38,7 +38,7 @@ public class Albums_Fr extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.directory_grid);
+        RecyclerView recyclerView = getView().findViewById(R.id.directory_grid);
 
         Context a = this.getActivity();
 

@@ -18,46 +18,27 @@ public class ListenerInterfaceContainer
     {
         s = new SongsRecyclerAdapter.AdapterListenerInterface() {
             @Override
-            public void classOnClick(View v, int position) {
-                Log.d("midebug",v +" " + position + " ");
-
-                //TODO implement play/pause
+            public void playPause(View v, int position) {
 
                 RelativeLayout songLayout = (RelativeLayout) v.getParent();
-
-                TextView t = songLayout.findViewById(R.id.item_song_name);
-
-                ImageView playIcon = songLayout.findViewById(R.id.play_icon);
-                ImageView pauseIcon = songLayout.findViewById(R.id.pause_icon);
-
+                TextView songName = songLayout.findViewById(R.id.item_song_name);
                 AudioPlayer player = MainActivity.audioPlayer;
 
-                if( playIcon.getVisibility() == View.VISIBLE )
+
+                switch (v.getId())
                 {
-                    playIcon.setVisibility(View.INVISIBLE);
-                    pauseIcon.setVisibility(View.VISIBLE);
+                    case(R.id.play_icon):
+                        player.play(MainActivity.mediaData.getSongWithName(songName.getText().toString()));
+                        break;
 
-                    if(player.playingSongLayout != null && player.playingSongLayout != songLayout)
-                    {
-                        player.playingSongLayout.findViewById(R.id.play_icon).setVisibility(View.VISIBLE);
-                        player.playingSongLayout.findViewById(R.id.pause_icon).setVisibility(View.INVISIBLE);
-                    }
 
-                    //player.play(MainActivity.mediaData.getSongsList().get(position));
-                    player.play(MainActivity.mediaData.getSongWithName(t.getText().toString()));
-                    player.playingSongLayout = songLayout;
-                }
-                else
-                {
-                    playIcon.setVisibility(View.VISIBLE);
-                    pauseIcon.setVisibility(View.INVISIBLE);
-
-                    player.pause();
+                    case (R.id.pause_icon):
+                        player.pause();
                 }
             }
 
             @Override
-            public void daysOnClick(View v, int position) {
+            public void addToPlaylist(View v, int position) {
 
             }
         };
