@@ -26,6 +26,7 @@ public class DirectorySongs extends AppCompatActivity {
 
         android.support.v7.widget.Toolbar tool = findViewById(R.id.toolbar);
         setSupportActionBar(tool);
+        tool.setTitleTextColor(getResources().getColor(R.color.colorAccent));
 
         Intent intent = getIntent();
         int albumPos = intent.getIntExtra("position", 0);
