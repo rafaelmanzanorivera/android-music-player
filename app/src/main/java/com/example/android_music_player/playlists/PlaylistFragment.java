@@ -4,7 +4,6 @@ package com.example.android_music_player.playlists;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteAbortException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
@@ -18,12 +17,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android_music_player.R;
+import com.example.android_music_player.playlists.PlaylistSongs.PlaylistSongsss;
 import com.example.android_music_player.playlists.database.PlaylistDataHelper;
 
 /**
@@ -48,9 +48,9 @@ public class PlaylistFragment extends ListFragment implements AdapterView.OnItem
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-
-        FloatingActionButton fab = getView().findViewById(R.id.fab);
         super.onActivityCreated(savedInstanceState);
+        FloatingActionButton fab = getView().findViewById(R.id.fab);
+
 
         SQLiteOpenHelper playlistDHelper = new PlaylistDataHelper(getContext());
 
@@ -68,12 +68,8 @@ public class PlaylistFragment extends ListFragment implements AdapterView.OnItem
             @Override
             public void onClick(View view) {
 
-
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.MyDialogTheme);
                 builder.setTitle("Title");
-
-
 
                 // Set up the input
                 final EditText input = new EditText(getContext());
@@ -90,7 +86,7 @@ public class PlaylistFragment extends ListFragment implements AdapterView.OnItem
                         Cursor cursor = db.query("playlists", new String[]{"_id","name"},null,null,null,null,null,null);
                         adapter.swapCursor(cursor);
                         adapter.notifyDataSetChanged();
-                        Snackbar.make(view, "Added playlist", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        Snackbar.make(getView(), "Added playlist", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -112,6 +108,23 @@ public class PlaylistFragment extends ListFragment implements AdapterView.OnItem
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
         Toast.makeText(getActivity(), "Item: " + position, Toast.LENGTH_SHORT).show();
+
+        TextView playlistName = view.findViewById(R.id.item_playlist_name);
+
+        SQLiteOpenHelper playlistDHelper = new PlaylistDataHelper(getContext());
+
+        SQLiteDatabase db = playlistDHelper.getReadableDatabase();
+
+        String idplaylist = PlaylistDataHelper.getItemId(db,"playlists","name", playlistName.getText().toString());
+
+        Intent intent = new Intent(getActivity(), PlaylistSongsss.class);
+
+        intent.putExtra("playlist_id",idplaylist);
+
+        startActivity(intent);
+
+
+
     }
 
 

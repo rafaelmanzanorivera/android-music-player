@@ -9,7 +9,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".playlists.Playlists">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,22 +18,19 @@ tools:context=".playlists.Playlists">
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        />
+        layout="@layout/toolbar"/>
 
     <fragment
         android:id="@+id/fragment1"
         android:name="com.example.android_music_player.playlists.PlaylistFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
-        android:paddingTop="?android:attr/actionBarSize"/>
+        android:layout_height="match_parent" />
 
 
 
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
 
 <android.support.design.widget.NavigationView
 android:id="@+id/navigationdrawer_view"

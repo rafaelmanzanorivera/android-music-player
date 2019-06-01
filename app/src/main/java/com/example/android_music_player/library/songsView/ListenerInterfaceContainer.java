@@ -7,6 +7,8 @@ import android.widget.TextView;
 import com.example.android_music_player.AudioPlayer;
 import com.example.android_music_player.MainActivity;
 import com.example.android_music_player.R;
+import com.example.android_music_player.data.AudioModel;
+import com.example.android_music_player.playlists.database.PlaylistDataHelper;
 
 public class ListenerInterfaceContainer
 {
@@ -36,7 +38,12 @@ public class ListenerInterfaceContainer
             }
 
             @Override
-            public void addToPlaylist(View v, int position) {
+            public void addToPlaylist(View v, int position)
+            {
+                RelativeLayout songLayout = (RelativeLayout) v.getParent();
+                TextView songName = songLayout.findViewById(R.id.item_song_name);
+                AudioModel song = MainActivity.mediaData.getSongWithName(songName.getText().toString());
+
 
             }
         };

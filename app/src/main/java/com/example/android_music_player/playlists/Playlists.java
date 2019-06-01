@@ -12,7 +12,12 @@ import android.view.MenuItem;
 
 import com.example.android_music_player.MainActivity;
 import com.example.android_music_player.R;
+import com.example.android_music_player.data.MediaData;
+
 public class Playlists extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
+
+
+    public static MediaData mediaData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,9 @@ public class Playlists extends AppCompatActivity implements NavigationView.OnNav
         NavigationView navigationView = findViewById(R.id.navigationdrawer_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.navigation_playlists);
+
+        mediaData = new MediaData(this);
+        mediaData.getSongsList();
 
     }
 
