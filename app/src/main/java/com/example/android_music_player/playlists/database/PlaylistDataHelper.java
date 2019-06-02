@@ -26,9 +26,9 @@ public class PlaylistDataHelper extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("DROP TABLE playlists");
-        db.execSQL("DROP TABLE songs");
-        db.execSQL("DROP TABLE playlists_songs");
+//        db.execSQL("DROP TABLE playlists");
+//        db.execSQL("DROP TABLE songs");
+//        db.execSQL("DROP TABLE playlists_songs");
 
 
 
@@ -54,13 +54,14 @@ public class PlaylistDataHelper extends SQLiteOpenHelper
                     "FOREIGN KEY(song_id) REFERENCES songs(_id)" +
                 ")");
 
-        addPlaylist(db,"Techno");
-        addPlaylist(db,"Smooth");
-        addSongToPlaylist(db,"Smooth",Playlists.mediaData.getSongWithName("Encount"));
-        addSongToPlaylist(db,"Smooth",Playlists.mediaData.getSongWithName("Dream"));
-        addSongToPlaylist(db,"Smooth",Playlists.mediaData.getSongWithName("Polona"));
-
-        addSongToPlaylist(db,"Techno",Playlists.mediaData.getSongWithName("Coca"));
+//        addPlaylist(db,"Techno");
+//        addPlaylist(db,"Smooth");
+//
+//
+//        addSongToPlaylist(db,"Techno",Playlists.mediaData.getSongWithName("Coca"));
+//        addSongToPlaylist(db,"Smooth",Playlists.mediaData.getSongWithName("Encount"));
+//        addSongToPlaylist(db,"Smooth",Playlists.mediaData.getSongWithName("Dream"));
+//        addSongToPlaylist(db,"Smooth",Playlists.mediaData.getSongWithName("Polona"));
 
     }
 
@@ -85,8 +86,8 @@ public class PlaylistDataHelper extends SQLiteOpenHelper
         String playlistId = getItemId(db,"playlists","name",playlist);
 
         ContentValues playlistData = new ContentValues();
-        playlistData.put("PLAYLIST_ID",playlistId);
-        playlistData.put("SONG_ID", songId);
+        playlistData.put("_id",playlistId);
+        playlistData.put("song_id", songId);
         db.insert("playlists_songs",null,playlistData);
 
     }
@@ -129,6 +130,7 @@ public class PlaylistDataHelper extends SQLiteOpenHelper
         cursor.close();
         return id;
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

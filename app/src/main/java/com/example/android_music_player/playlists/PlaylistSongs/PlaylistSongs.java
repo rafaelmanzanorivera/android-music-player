@@ -17,7 +17,7 @@ import android.widget.SimpleCursorAdapter;
 import com.example.android_music_player.R;
 import com.example.android_music_player.playlists.database.PlaylistDataHelper;
 
-public class PlaylistSongsss extends AppCompatActivity {
+public class PlaylistSongs extends AppCompatActivity { //TODO playlist vacia peta
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class PlaylistSongsss extends AppCompatActivity {
         android.support.v7.widget.Toolbar tool = findViewById(R.id.toolbar);
         setSupportActionBar(tool);
         tool.setTitleTextColor(getResources().getColor(R.color.colorAccent));
-        getSupportActionBar().setTitle("Playlist name");//TODO get from intent
+        getSupportActionBar().setTitle(getIntent().getStringExtra("playlist_name"));//TODO get from intent
 
     }
 

@@ -23,7 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android_music_player.R;
-import com.example.android_music_player.playlists.PlaylistSongs.PlaylistSongsss;
+import com.example.android_music_player.playlists.PlaylistSongs.PlaylistSongs;
 import com.example.android_music_player.playlists.database.PlaylistDataHelper;
 
 /**
@@ -117,9 +117,10 @@ public class PlaylistFragment extends ListFragment implements AdapterView.OnItem
 
         String idplaylist = PlaylistDataHelper.getItemId(db,"playlists","name", playlistName.getText().toString());
 
-        Intent intent = new Intent(getActivity(), PlaylistSongsss.class);
+        Intent intent = new Intent(getActivity(), PlaylistSongs.class);
 
         intent.putExtra("playlist_id",idplaylist);
+        intent.putExtra("playlist_name",playlistName.getText().toString());
 
         startActivity(intent);
 
