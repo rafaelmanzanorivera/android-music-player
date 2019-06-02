@@ -52,7 +52,7 @@ public class Playlists extends AppCompatActivity implements NavigationView.OnNav
         switch (id)
         {
             case R.id.navigation_library:
-                finishActivity(0);
+                finish();
                 break;
 
             case R.id.navigation_playlists:
