@@ -1,6 +1,8 @@
 package com.example.android_music_player;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -17,7 +19,7 @@ import android.view.MenuItem;
 import com.example.android_music_player.data.MediaData;
 import com.example.android_music_player.library.songsView.SongsRecyclerAdapter;
 import com.example.android_music_player.library.view_pager.ViewPagerAdapter;
-
+import com.example.android_music_player.playlists.Playlists;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,11 +29,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final int PERMISSIONS_REQUEST_READ_STORAGE= 0;
     public static SongsRecyclerAdapter songsRecyclerAdapter;
 
+    public static Context context;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        context = this;
 
         getPermissions();
 
@@ -60,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = findViewById(R.id.navigationdrawer_view);
         navigationView.setNavigationItemSelectedListener(this);//decirle al menú que la actividad va a controlar los eventos de seleccionar un ítem.
-
+        navigationView.setCheckedItem(R.id.navigation_library);
         //get media data TODO in background
         mediaData.getSongsList();
         mediaData.getDirectoriesList();
@@ -77,7 +83,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.navigation_playlists:
-                //TODO intent to playlists actv
+                Intent intent = new Intent(this, Playlists.class);
+                startActivity(intent);
                 break;
 
             case R.id.navigation_options:
