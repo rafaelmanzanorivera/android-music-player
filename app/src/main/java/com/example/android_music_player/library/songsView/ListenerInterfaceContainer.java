@@ -1,6 +1,15 @@
 package com.example.android_music_player.library.songsView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -8,6 +17,8 @@ import com.example.android_music_player.AudioPlayer;
 import com.example.android_music_player.MainActivity;
 import com.example.android_music_player.R;
 import com.example.android_music_player.data.AudioModel;
+import com.example.android_music_player.library.AddToPlaylist.AddToPlaylist;
+import com.example.android_music_player.playlists.Playlists;
 import com.example.android_music_player.playlists.database.PlaylistDataHelper;
 
 public class ListenerInterfaceContainer
@@ -44,6 +55,11 @@ public class ListenerInterfaceContainer
                 TextView songName = songLayout.findViewById(R.id.item_song_name);
                 AudioModel song = MainActivity.mediaData.getSongWithName(songName.getText().toString());
 
+                Intent intent = new Intent(MainActivity.context, AddToPlaylist.class);
+                intent.putExtra("song",song);
+                MainActivity.context.startActivity(intent);
+//
+                Snackbar.make(v, "Added to playlist", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
             }
         };

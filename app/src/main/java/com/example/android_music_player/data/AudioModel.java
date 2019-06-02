@@ -1,6 +1,8 @@
 package com.example.android_music_player.data;
 
-public class AudioModel {
+import java.io.Serializable;
+
+public class AudioModel implements Serializable {
     String aPath;
     String aName;
     String aAlbum;
@@ -30,4 +32,6 @@ public class AudioModel {
     public void setaArtist(String aArtist) {
         this.aArtist = aArtist;
     }
+
+
 }
