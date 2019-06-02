@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/kdkss"
-    android:paddingTop="?android:attr/actionBarSize">
+    android:id="@+id/kdkss">
 
     <ListView
         android:id="@android:id/list"
